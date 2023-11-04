@@ -14,10 +14,10 @@ import NotFound from "./Components/NotFound";
 function App() {
 
   return (
-        
-    <Container  >
+
+    <Container>
       <Router>
-          <Navbar />
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

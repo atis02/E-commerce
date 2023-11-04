@@ -9,6 +9,7 @@ import {
   useMediaQuery,
   Typography,
   useTheme,
+  Badge,
 } from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
@@ -26,7 +27,7 @@ import Search from "@mui/icons-material/Search";
 import { navbarItems } from "./NavbarItems/NavbarItems.mjs";
 
 export default function Navbar() {
-  const state1 = useSelector((state) => state.handleCart );
+  const state1 = useSelector((state) => state.handleCart);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -49,7 +50,7 @@ export default function Navbar() {
         <Typography fontSize={{ lg: "30px", sm: "20px", xs: "15px" }}>
           COLLECTIONS
         </Typography>
-        <Stack>
+        <Stack direction='row' alignItems='center' spacing='3'>
           <IconButton
             onClick={toggleMobileMenu}
             sx={{
@@ -111,30 +112,23 @@ export default function Navbar() {
                         <Typography ml={1}>Register</Typography>
                       </Button>
                     </Link>
-                    <Link to="shopping-card">
-                      <Button
-                        sx={{
-                          backgroundColor: "blue",
-                          color: "white",
-                          "&:hover": { backgroundColor: "black !important" },
-                          alignItems: "center",
-                        }}
-                      >
-                        <ShoppingCartIcon mr="15px" />
-                        <Typography ml={1}>Cart({state1.length})</Typography>
-                      </Button>
-                    </Link>
+
                   </Stack>
                 </>
               </Stack>
             </Box>
           </Drawer>
+          <Link to="shopping-card">
+            <Badge badgeContent={state1.length} color="success">
+              <ShoppingCartIcon mr="15px" />
+            </Badge>
+          </Link>
         </Stack>
         <Stack
           direction="row"
           spacing={4}
           alignItems="center"
-          
+
           sx={{ ...(isResponsive ? { display: "none" } : { display: "" }) }}
         >
 
@@ -154,7 +148,8 @@ export default function Navbar() {
         </Stack>
         <Stack
           direction="row"
-          spacing={1}
+          alignItems='center' justifyContent='center'
+          spacing={4}
           sx={{ ...(isResponsive ? { display: "none" } : { display: "" }) }}
         >
           <Link to="register">
@@ -171,17 +166,9 @@ export default function Navbar() {
             </Button>
           </Link>
           <Link to="shopping-card">
-            <Button
-              sx={{
-                backgroundColor: "blue",
-                color: "white",
-                "&:hover": { backgroundColor: "black !important" },
-                alignItems: "center",
-              }}
-            >
+            <Badge badgeContent={state1.length} color="success">
               <ShoppingCartIcon mr="15px" />
-              <Typography ml={1}>Cart({state1.length})</Typography>
-            </Button>
+            </Badge>
           </Link>
         </Stack>
       </Box>
