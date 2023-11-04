@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Box
-        sx={{ display: { lg: 'flex', sm: 'flex', xs: 'column  ' } }}
+        sx={{ display: { lg: 'flex', sm: 'flex', xs: 'column' }, alignItems: 'center', justifyContent: 'space-between' }}
         lg={{ direction: 'row' }}
         height="80vh"
         spacing={3}
